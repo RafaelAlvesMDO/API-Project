@@ -9,13 +9,11 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    // Listar todos os usuários
     public function index()
     {
         return response()->json(User::all(), 200);
     }
 
-    // Criar usuário
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -31,14 +29,12 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
-    // Mostrar usuário específico
     public function show($id)
     {
         $user = User::findOrFail($id);
         return response()->json($user, 200);
     }
 
-    // Atualizar usuário
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -63,7 +59,6 @@ class UserController extends Controller
         return response()->json($user, 200);
     }
 
-    // Deletar usuário
     public function destroy($id)
     {
         $user = User::findOrFail($id);

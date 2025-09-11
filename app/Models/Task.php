@@ -15,7 +15,6 @@ class Task extends Model
         'user_id',
     ];
 
-    // Cada task pertence a um usuário
     public function user()
     {
         return $this->belongsTo(User::class);

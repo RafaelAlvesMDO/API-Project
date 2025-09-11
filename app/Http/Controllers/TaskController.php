@@ -8,15 +8,12 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    // Listar todas as tasks
     public function index()
     {
-        // Inclui dados do usuário relacionado
         $tasks = Task::with('user')->get();
         return response()->json($tasks, 200);
     }
 
-    // Criar uma nova task
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -30,14 +27,12 @@ class TaskController extends Controller
         return response()->json($task, 201);
     }
 
-    // Mostrar task específica
     public function show($id)
     {
         $task = Task::with('user')->findOrFail($id);
         return response()->json($task, 200);
     }
 
-    // Atualizar task
     public function update(Request $request, $id)
     {
         $task = Task::findOrFail($id);
@@ -53,7 +48,6 @@ class TaskController extends Controller
         return response()->json($task, 200);
     }
 
-    // Deletar task
     public function destroy($id)
     {
         $task = Task::findOrFail($id);
